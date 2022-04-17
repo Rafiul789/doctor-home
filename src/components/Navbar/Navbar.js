@@ -22,7 +22,7 @@ const Navbar = () => {
            
             to='/about'
           >
-            About Me
+            About 
           </CustomLink>
 
          
