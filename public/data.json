@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+     
+      "name": "Surgery",
+      "description": "High quality health care and service. Advanced medical technologies and innovative diagnosis and treatment methods.Provide a good surgery option ",
+     
+      "img": "https://i.ibb.co/8c25KrL/surgery.jpg"
+     
+    }, 
+    {
+        "id": 2,
+     
+        "name": "Cardiology",
+        "description": "Great Services for heart patients.I ensure best quality heart surgery.Provide world best heart treatment.Patient's satisfaction is our concern.",
+       
+        "img": "https://i.ibb.co/WKSQNbX/cardeology.jpg"
+    }, 
+    {
+      "id": 3,
+     
+      "name": "CT Scan",
+      "description": "Best CT Scan technology for patients.Patients can easily access to this service.It is afffordable.",
+     
+      "img": "https://i.ibb.co/mvfC2wK/ct.jpg"
+    }] 
