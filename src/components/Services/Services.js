@@ -13,7 +13,7 @@ useEffect(()=>{
 
     return (
         <div>
-            <div className="mt-10 md:flex  gap-4 justify-around "> {services.map(service=><Service key={service.id }  service={service} > </Service>   )}  </div>
+            <div className="mt-10 md:grid  md:grid-cols-3  gap-6  "> {services.map(service=><Service key={service.id }  service={service} > </Service>   )}  </div>
         </div>
     );
 };
