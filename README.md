@@ -13,3 +13,14 @@
 ## 4. If user try to login with invalid character and password it will show error.
 
 ## 5. User Can toggle between login and signup page .
+
+## 6. A Verification Email will be sent when a new user is created .
+
+# Tech Stacks
+
+1.React 
+2.React Router
+2.Tailwind Css
+3.Firebase authentication
+4.Firebase Hooks
+
