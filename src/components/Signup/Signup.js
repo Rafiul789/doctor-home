@@ -1,11 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {  createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../Firebase/Firebase.init';
 const Signup = () => {
+
+
+
+    const handleSignup=(event) => {
+event.preventDefault();
+
+const email= event.target.email.value
+const password=event.target.password.value
+console.log('Signup')
+createUserWithEmailAndPassword(auth, email, password)
+.then((userCredential) => {
+  // Signed in 
+  const user = userCredential.user;
+  console.log(user)
+  // ...
+})
+.catch((error) => {
+  const errorCode = error.code;
+  const errorMessage = error.message;
+  console.log(errorMessage)
+  // ..
+});
+    }
+   
+
+
+
     return (
         <div>
             <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none mx-auto ">
 						<h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
-						<htmlFrom className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+						<form onSubmit={handleSignup} className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
 							<div className="mb-4 md:flex md:justify-between">
 								<div className="mb-4 md:mr-2 md:mb-0">
 									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="firstName">
@@ -67,9 +96,9 @@ const Signup = () => {
 								</div>
 							</div>
 							<div className="mb-6 text-center">
-								<button
+								<button type="submit" 
 									className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-									type="button"
+									
 								>
 									Register Account
 								</button>
@@ -91,7 +120,7 @@ const Signup = () => {
 									Already have an account? <Link to='/login'> Login!</Link> 
 								</h2>
 							</div>
-						</htmlFrom>
+						</form>
 					</div>
         </div>
     );

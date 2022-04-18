@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import {auth} from '../Firebase/Firebase.init';
-import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword} from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
 const Login = () => {
@@ -17,7 +17,23 @@ const Login = () => {
          
         });
     }
-  
+  const handleLogin = (event) => {
+      event.preventDefault();
+      const email = event.target.email.value
+      const password = event.target.password.value
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user)
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage)
+      });
+  }
     
    
     return (
@@ -31,11 +47,11 @@ const Login = () => {
                         <img src="https://tailus.io/sources/blocks/social/preview/images/icon.svg" loading="lazy" className="w-10" alt="tailus logo"/>
                         <h2 className="mb-8 text-2xl text-center text-cyan-900 font-bold">Login</h2>
                     </div>
-                    <form className="shadow-lg w-80 p-4 flex flex-col bg-white rounded-lg">
-      <input type="text" placeholder="Email or Phone Number" className="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
-      <input type="text" placeholder="Pasword" className="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
+                    <form  onSubmit={handleLogin} className="shadow-lg w-80 p-4 flex flex-col bg-white rounded-lg">
+      <input type="text" id="email" name="email" placeholder="Email or Phone Number" className="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
+      <input  type="text" id="password" name="password"placeholder="Password" className="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
       <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">Login</button>
-      <Link to='/' className="text-blue-400 text-center my-2">Forgot Pasword?</Link>
+      <Link to='/' className="text-blue-400 text-center my-2">Forgot Password?</Link>
       <hr />
       <button onClick={() => navigate("/signup")}  className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg">Create New Account</button>
     </form>
