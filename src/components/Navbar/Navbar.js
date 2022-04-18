@@ -31,7 +31,12 @@ const Navbar = () => {
           >
             About 
           </CustomLink>
-
+          <CustomLink
+           
+           to='/login'
+         >
+           Login
+         </CustomLink>
          
         </div>
       </nav>
