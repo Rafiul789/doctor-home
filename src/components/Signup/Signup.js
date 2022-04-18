@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {  createUserWithEmailAndPassword } from "firebase/auth";
+import {  createUserWithEmailAndPassword ,sendEmailVerification} from "firebase/auth";
 import {auth} from '../Firebase/Firebase.init';
 
 import toast from 'react-hot-toast';
@@ -66,6 +66,7 @@ const handleSignup = (event) => {
           const user = userCredential.user;
           toast.success("Account created", { id: "created" });
           navigate("/");
+		  verifyEmail()
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -78,6 +79,14 @@ const handleSignup = (event) => {
     }
   };
 
+  const verifyEmail=()=>{
+	sendEmailVerification(auth.currentUser)
+	.then(() => {
+	  // Email verification sent!
+	  // ...
+	});
+
+  }
 
     return (
         <div>
