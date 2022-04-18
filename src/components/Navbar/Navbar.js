@@ -33,6 +33,13 @@ const Navbar = () => {
           </CustomLink>
           <CustomLink
            
+           to='/signup'
+         >
+           Sign Up
+         </CustomLink>
+
+          <CustomLink
+           
            to='/login'
          >
            Login
